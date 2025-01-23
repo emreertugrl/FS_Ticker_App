@@ -9,6 +9,7 @@ const Sidebar = () => {
         <Navlink href="/">Dashboard</Navlink>
         <Navlink href="/tickets">Tickets</Navlink>
         <Navlink href="/teams">Takımlar</Navlink>
+        <Navlink href="/inbox">Gelen Kutusu</Navlink>
         <Navlink href="/settings">Ayarlar</Navlink>
         <Navlink href="/statistics">İstatistikler</Navlink>
       </nav>
