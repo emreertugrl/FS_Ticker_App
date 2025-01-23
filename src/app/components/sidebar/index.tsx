@@ -12,8 +12,8 @@ const smooch = Smooch_Sans({
 const Sidebar = () => {
   return (
     <aside className="bg-zinc-900 p-5 flex flex-col justify-between">
-      <div className="bg-white rounded-full md:flex md:items-center md:gap-3">
-        <Image alt="logo" src={"/logo.png"} width={50} height={50} />
+      <div className="bg-white rounded-full md:flex md:items-center md:gap-3 max-md:size-10">
+        <Image alt="logo" src={"/logo.png"} width={50} height={50} className="max-md:size-10" />
         <span style={smooch.style} className="max-md:hidden text-zinc-800 text-4xl">
           Rudder
         </span>
@@ -21,14 +21,14 @@ const Sidebar = () => {
       <nav className="flex flex-col">
         {links.map((item, key) => (
           <Navlink key={key} href={item.href}>
-            <div className="flex items-center gap-3 px-3 md:pe-8 py-2">
+            <div className="flex items-center gap-3 px-3 md:pe-8 py-2 lg:text-lgs">
               <span className="max-md:text-xl ">{item.icon}</span>
               <span className="max-md:hidden">{item.title}</span>
             </div>
           </Navlink>
         ))}
       </nav>
-      <div className="flex flex-col text-gray-500 items-start">
+      <div className="flex flex-col text-gray-500 items-start lg:text-lg">
         <button className="flex items-center gap-2 px-5 py-2">
           <Help className="max-md:text-xl" />
           <span className="max-md:hidden">Yardım Merkezi</span>
