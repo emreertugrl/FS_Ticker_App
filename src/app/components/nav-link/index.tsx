@@ -14,7 +14,7 @@ const Navlink = ({ href, children }: Props) => {
   return (
     <Link
       href={href}
-      className={`px-5 py-2 rounded-md text-gray-300 ${
+      className={`rounded-md text-gray-300 ${
         href === path ? "bg-zinc-800 text-white" : "text-gray-400"
       }`}
     >
