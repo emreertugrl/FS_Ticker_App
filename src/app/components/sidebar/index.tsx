@@ -22,7 +22,7 @@ const Sidebar = () => {
         {links.map((item, key) => (
           <Navlink key={key} href={item.href}>
             <div className="flex items-center gap-3 px-3 md:pe-8 py-2 lg:text-lgs">
-              <span className="max-md:text-xl ">{item.icon}</span>
+              <span className="max-md:text-2xl ">{item.icon}</span>
               <span className="max-md:hidden">{item.title}</span>
             </div>
           </Navlink>
@@ -30,7 +30,7 @@ const Sidebar = () => {
       </nav>
       <div className="flex flex-col text-gray-500 items-start lg:text-lg">
         <button className="flex items-center gap-2 px-5 py-2">
-          <Help className="max-md:text-xl" />
+          <Help className="max-md:text-2xl" />
           <span className="max-md:hidden">Yardım Merkezi</span>
         </button>
         <button className="flex items-center gap-2 px-5 py-2">
