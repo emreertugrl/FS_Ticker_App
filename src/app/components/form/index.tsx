@@ -1,4 +1,7 @@
 "use client";
+import { ITicket } from "@/app/api/tickets/models/Ticket";
+import { createTicket } from "@/app/utils/service";
+import { useRouter } from "next/navigation";
 import React, { FormEvent } from "react";
 
 type Props = {
@@ -6,13 +9,21 @@ type Props = {
 };
 
 const Form = ({ editItem }: Props) => {
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const router = useRouter();
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // form data alma işlemleri burada yapılabilir
     const formData = new FormData(e.currentTarget);
     console.log(formData);
     const ticketData = Object.fromEntries(formData.entries());
-    // todo api'e ticket oluşturma isteği at
+    // api'e ticket oluşturma isteği at
+    await createTicket(ticketData as unknown as ITicket);
+    // kullanıcıyı tickets sayfasına yönlendir
+    router.push("/tickets");
+
+    // sayfayı yenile
+    router.refresh();
   };
 
   return (
