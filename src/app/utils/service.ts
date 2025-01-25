@@ -25,3 +25,12 @@ export const getTickets = async (): Promise<GetTicketsResponse> => {
   }
   return await res.json(); // stringfy olarak gelen veriyi json çeviririz.
 };
+
+export const deleteTicket = async (id: string): Promise<void> => {
+  const res = await fetch(`${baseURL}/api/tickets/${id}`, {
+    method: "DELETE",
+  });
+  if (!res.ok) {
+    throw new Error("Tickets silinirken bir hata oluştu");
+  }
+};
