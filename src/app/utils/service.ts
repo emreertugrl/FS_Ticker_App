@@ -1,4 +1,4 @@
-import { ITicket, ITicketData } from "../api/tickets/models/Ticket";
+import { ITicket, ITicketData } from "../api/models/Ticket";
 
 const baseURL = "http://localhost:3000";
 

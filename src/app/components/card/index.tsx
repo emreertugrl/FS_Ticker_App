@@ -1,4 +1,4 @@
-import { ITicketData } from "@/app/api/tickets/models/Ticket";
+import { ITicketData } from "@/app/api/models/Ticket";
 import React from "react";
 import PriorityBlock from "./priority-block";
 import DeleteBlock from "./delete-block";

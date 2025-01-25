@@ -1,5 +1,5 @@
 "use client";
-import { ITicket } from "@/app/api/tickets/models/Ticket";
+import { ITicket } from "@/app/api/models/Ticket";
 import { createTicket } from "@/app/utils/service";
 import { useRouter } from "next/navigation";
 import React, { FormEvent } from "react";
