@@ -6,7 +6,7 @@ const Tickets = async () => {
   // Tickets verileri alınır.
   const { tickets } = await getTickets();
   // ticket'ların kategorilerini benzersiz bir dizi olarak tan.
-  const categories = [...new Set(tickets.map((ticket) => ticket.category))];
+  const categories = [...new Set(tickets.map((ticket) => ticket.category))].sort();
   return (
     <div className="">
       {categories.map((category, key) => (

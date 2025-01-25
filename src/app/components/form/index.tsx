@@ -47,9 +47,9 @@ const Form = ({ editItem }: Props) => {
         <fieldset>
           <label htmlFor="category">Kategori</label>
           <select name="category" defaultValue={editItem?.category}>
-            <option>Yazılım Sorunu</option>
-            <option>Donanım Sorunu</option>
             <option>Bağlantı Sorunu</option>
+            <option>Donanım Sorunu</option>
+            <option>Yazılım Sorunu</option>
           </select>
         </fieldset>
         <fieldset>
@@ -82,8 +82,8 @@ const Form = ({ editItem }: Props) => {
           <label htmlFor="status">Durum</label>
           <select name="status" defaultValue={editItem?.status}>
             <option>Beklemede</option>
-            <option>Devam Ediyor</option>
             <option>Çözüldü</option>
+            <option>Devam Ediyor</option>
           </select>
         </fieldset>
         <button
