@@ -8,7 +8,7 @@ const Tickets = async () => {
   // ticket'ların kategorilerini benzersiz bir dizi olarak tan.
   const categories = [...new Set(tickets.map((ticket) => ticket.category))];
   return (
-    <div className="p-5">
+    <div className="">
       {categories.map((category, key) => (
         <div key={key} className="mb-4">
           <h2 className="mb-2 text-xl text-zinc-400 font-semibold">{category}</h2>
