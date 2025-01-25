@@ -26,7 +26,13 @@ const Card = ({ ticket }: Props) => {
           <p className="whitespace-pre-wrap">{ticket.description}</p>
           <div className="flex mt-2">
             <div className="flex flex-col">
-              <p className="text-sm my-1">{ticket.createdAt}</p>
+              <p className="text-sm my-1">
+                {new Date(ticket.createdAt).toLocaleDateString("tr", {
+                  day: "numeric",
+                  month: "long",
+                  year: "numeric",
+                })}
+              </p>
               <ProgressBlock progress={ticket.progress} />
             </div>
             <div className="flex items-center ml-auto">

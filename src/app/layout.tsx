@@ -31,9 +31,9 @@ export default function RootLayout({
       >
         <div className="flex h-full">
           <Sidebar />
-          <div className="flex-1 p-4 md:px-8">
+          <div className="flex-1 pb-10 p-4 md:px-8 min-h-screen">
             <Header />
-            <div className="h-full overflow-y-auto">{children}</div>
+            <div className="h-full overflow-y-auto  no-scrollbar">{children}</div>
           </div>
         </div>
       </body>
