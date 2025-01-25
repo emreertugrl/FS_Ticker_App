@@ -57,3 +57,27 @@ export const updateTicket = async (id: string, data: ITicket): Promise<void> => 
     throw new Error("Tickets güncellenirken bir hata oluştu");
   }
 };
+
+type GetStatisticsResponse = {
+  message: string;
+  totalTickets: number;
+  ticketsByCategory: {
+    "Bağlantı Sorunu": number;
+    "Donanım Sorunu": number;
+    "Yazılım Sorunu": number;
+  };
+  ticketsBystatus: {
+    Beklemede: number;
+    "Devam Ediyor": number;
+    Çözüldü: number;
+  };
+  averagePriority: number;
+  averageProgress: number;
+};
+export const getStatistics = async (): Promise<GetStatisticsResponse> => {
+  const res = await fetch(`${baseURL}/api/statistics`);
+  if (!res.ok) {
+    throw new Error("İstatistik verisi alınamadı");
+  }
+  return await res.json(); // stringfy olarak gelen veriyi json çeviririz.
+};

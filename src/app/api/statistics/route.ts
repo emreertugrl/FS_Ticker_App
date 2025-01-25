@@ -22,11 +22,13 @@ export async function GET() {
     }, {});
     // ortalama öncelik seviyesini hesaplama
     const totalPriority = tickets.reduce((acc, ticket) => acc + ticket.priority, 0);
-    const averagePriority = totalPriority > 0 ? (totalPriority / totalTickets).toFixed(2) : 0;
+    const averagePriority =
+      totalPriority > 0 ? Number((totalPriority / totalTickets).toFixed(2)) : 0;
 
     // ortalama öncelik seviyesini hesaplama
     const totalProgress = tickets.reduce((acc, ticket) => acc + ticket.progress, 0);
-    const averageProgress = totalProgress > 0 ? (totalProgress / totalTickets).toFixed(2) : 0;
+    const averageProgress =
+      totalProgress > 0 ? Number((totalProgress / totalTickets).toFixed(2)) : 0;
 
     // client cevep
     return NextResponse.json(
