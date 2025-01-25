@@ -34,3 +34,26 @@ export const deleteTicket = async (id: string): Promise<void> => {
     throw new Error("Tickets silinirken bir hata oluştu");
   }
 };
+
+type GetTicketResponse = {
+  message: string;
+  ticket: ITicketData;
+};
+export const getTicket = async (id: string): Promise<GetTicketResponse> => {
+  const res = await fetch(`${baseURL}/api/tickets/${id}`);
+  if (!res.ok) {
+    throw new Error("Tickets verisi alınamadı");
+  }
+  return await res.json(); // stringfy olarak gelen veriyi json çeviririz.
+};
+
+export const updateTicket = async (id: string, data: ITicket): Promise<void> => {
+  const res = await fetch(`${baseURL}/api/tickets/${id}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+  if (!res.ok) {
+    throw new Error("Tickets güncellenirken bir hata oluştu");
+  }
+};

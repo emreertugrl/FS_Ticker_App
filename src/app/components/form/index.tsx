@@ -1,11 +1,11 @@
 "use client";
-import { ITicket } from "@/app/api/models/Ticket";
-import { createTicket } from "@/app/utils/service";
+import { ITicket, ITicketData } from "@/app/api/models/Ticket";
+import { createTicket, updateTicket } from "@/app/utils/service";
 import { useRouter } from "next/navigation";
 import React, { FormEvent } from "react";
 
 type Props = {
-  editItem: boolean;
+  editItem: ITicketData | null;
 };
 
 const Form = ({ editItem }: Props) => {
@@ -17,8 +17,14 @@ const Form = ({ editItem }: Props) => {
     const formData = new FormData(e.currentTarget);
     console.log(formData);
     const ticketData = Object.fromEntries(formData.entries());
-    // api'e ticket oluşturma isteği at
-    await createTicket(ticketData as unknown as ITicket);
+    // güncellenecek eleman yoksa
+    if (!editItem) {
+      // api'e ticket oluşturma isteği at
+      await createTicket(ticketData as unknown as ITicket);
+    } else {
+      // api'e ticket güncelleme isteği at
+      await updateTicket(editItem._id, ticketData as unknown as ITicket);
+    }
     // kullanıcıyı tickets sayfasına yönlendir
     router.push("/tickets");
 
@@ -31,16 +37,16 @@ const Form = ({ editItem }: Props) => {
       <form onSubmit={handleSubmit} className="flex flex-col gap-3">
         <fieldset>
           <label htmlFor="title">Başlık</label>
-          <input type="text" required name="title" />
+          <input type="text" required name="title" defaultValue={editItem?.title} />
         </fieldset>
         <fieldset>
           <label htmlFor="description">Açıklama</label>
-          <input type="text" required name="description" />
+          <input type="text" required name="description" defaultValue={editItem?.description} />
         </fieldset>
 
         <fieldset>
           <label htmlFor="category">Kategori</label>
-          <select name="category">
+          <select name="category" defaultValue={editItem?.category}>
             <option>Yazılım Sorunu</option>
             <option>Donanım Sorunu</option>
             <option>Bağlantı Sorunu</option>
@@ -57,6 +63,7 @@ const Form = ({ editItem }: Props) => {
                   type="radio"
                   name="priority"
                   value={key + 1}
+                  defaultChecked={editItem?.priority === key + 1}
                 />
                 <label className="font-semibold text-lg cursor-pointer" htmlFor={String(key)}>
                   {key + 1}
@@ -68,12 +75,12 @@ const Form = ({ editItem }: Props) => {
 
         <fieldset>
           <label htmlFor="progress">İlerleme</label>
-          <input type="range" required name="progress" />
+          <input type="range" required name="progress" defaultValue={editItem?.progress} />
         </fieldset>
 
         <fieldset>
           <label htmlFor="status">Durum</label>
-          <select name="status">
+          <select name="status" defaultValue={editItem?.status}>
             <option>Beklemede</option>
             <option>Devam Ediyor</option>
             <option>Çözüldü</option>
@@ -83,7 +90,7 @@ const Form = ({ editItem }: Props) => {
           className="mt-5 bg-blue-600 p-2 rounded-md font-semibold hover:bg-blue-700 transition"
           type="submit"
         >
-          {editItem ? "Düzenle" : "Oluştur"}
+          {editItem ? "Kaydet" : "Oluştur"}
         </button>
       </form>
     </div>
